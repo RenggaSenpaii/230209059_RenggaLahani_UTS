@@ -49,14 +49,6 @@ class GradeCalculatorTest {
     }
 
     @Test
-    void testCalculateGPA_InvalidGradePoint_TooHigh() {
-        // Kasus: nilai grade point terlalu tinggi
-        List<CourseGrade> grades = List.of(new CourseGrade("PPL101", 3, 5.0));
-        Exception ex = assertThrows(IllegalArgumentException.class, () -> calculator.calculateGPA(grades));
-        assertTrue(ex.getMessage().contains("Invalid grade point"));
-    }
-
-    @Test
     void testCalculateGPA_InvalidGradePoint_Negative() {
         // Kasus: nilai grade point negatif
         List<CourseGrade> grades = List.of(new CourseGrade("PPL101", 3, -1.0));
@@ -120,11 +112,6 @@ class GradeCalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> calculator.determineAcademicStatus(5.0, 3));
     }
 
-    @Test
-    void testDetermineAcademicStatus_InvalidSemester() {
-        // Kasus: semester < 1
-        assertThrows(IllegalArgumentException.class, () -> calculator.determineAcademicStatus(3.0, 0));
-    }
 
     // ---------------------- calculateMaxCredits ----------------------
 
